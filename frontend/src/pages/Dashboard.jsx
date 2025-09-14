@@ -6,7 +6,7 @@ import AdminForm from "../components/AdminForm";
 import Navbar from "../components/Navbar";
 
 const Dashboard = () => {
-  const { user, notes, getNotes , upgradePlan } = useContext(AuthContext);
+  const { user, notes, getNotes, upgradePlan } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -51,10 +51,13 @@ const Dashboard = () => {
                 <button
                   disabled={user?.tenantId.plan === "pro"}
                   className={`w-full font-semibold text-lg rounded-md px-4 py-2 transition-colors 
-    ${user?.tenantId.plan === "pro" ? "bg-gray-300 cursor-not-allowed" : "bg-purple-500 text-white"}`}
-                  onClick={upgradePlan}
-                >
-                  {user?.tenantId.plan === "pro" ? "Pro Plan Active" : "Upgrade Plan"}
+                  ${user?.tenantId.plan === "pro" ? "bg-gray-300 cursor-not-allowed" : "bg-purple-500 text-white"}`}
+                  onClick={upgradePlan}>
+                  {loading
+                    ? "Upgrading..."
+                    : user?.tenantId.plan === "pro"
+                      ? "Pro Plan Active"
+                      : "Upgrade Plan"}
                 </button>
 
               </div>
