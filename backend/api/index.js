@@ -23,7 +23,7 @@ app.use(cors({
 }));
 
 // Health check endpoint
-app.get("/api/health", (req, res) => {
+app.get("/health", (req, res) => {
   return res.status(200).json({ status: "ok" });
 });
 
