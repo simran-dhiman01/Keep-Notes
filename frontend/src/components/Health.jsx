@@ -8,7 +8,7 @@ const Health = () => {
   useEffect(() => {
     const checkHealth = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/health", {
+        const res = await axios.get("https://keep-notes-mauve.vercel.app/health", {
           withCredentials: true, // send cookies if any
         });
         setStatus(res.data.status);
