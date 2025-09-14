@@ -7,11 +7,11 @@ This application implements multi-tenancy to support multiple tenants (companies
 
 ### Approach
 
-We use a **shared schema with a `tenantId` column** approach:
+I used a **shared schema with a `tenantId` column** approach:
 
-- All users and notes are stored in a single database.
+- All users , notes and tenants are stored in a single database.
 - Each `User` document has a `tenantId` field referencing the `Tenant` it belongs to.
-- Each `Note` document also has a `tenantId` field.
+- Each `Note` document also has a `tenantId` and `userId` field.
 - All API endpoints enforce tenant isolation by always filtering data by the `tenantId` of the authenticated user.
 - This ensures that users from one tenant cannot access notes or users of another tenant.
 
