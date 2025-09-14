@@ -65,6 +65,7 @@ export const AuthProvider = ({ children }) => {
 
     const upgradePlan = async () => {
         try {
+            setLoading(true);
             if (!user) return;
             const slug = user.tenantId.slug; // or a slug field if you have
             const res = await api.post(`/tenants/${slug}/upgrade`);
@@ -82,6 +83,9 @@ export const AuthProvider = ({ children }) => {
             }
         } catch (error) {
             console.error("Upgrade failed : ", error.response?.data?.message || error.message);
+        }
+        finally{
+            setLoading(false);
         }
     };
 
