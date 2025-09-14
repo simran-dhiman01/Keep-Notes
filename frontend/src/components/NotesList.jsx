@@ -21,6 +21,7 @@ const NotesList = ({ notes, refreshNotes }) => {
     }
     } catch (error) {
       console.error("Failed to delete note:", error);
+      alert(error.response?.data?.message || "Error deleting note");
     }
   };
 
@@ -44,6 +45,7 @@ const NotesList = ({ notes, refreshNotes }) => {
     }
     } catch (error) {
       console.error("Failed to edit note:", error);
+      alert(error.response?.data?.message || "Error updating note");
     }
   };
 
