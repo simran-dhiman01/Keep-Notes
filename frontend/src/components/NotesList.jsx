@@ -16,6 +16,9 @@ const NotesList = ({ notes, refreshNotes }) => {
       if (res.data.success) {
         refreshNotes(); 
       }
+      else {
+      alert(res.data.message || "Failed to delete note");
+    }
     } catch (error) {
       console.error("Failed to delete note:", error);
     }
@@ -36,6 +39,9 @@ const NotesList = ({ notes, refreshNotes }) => {
       if (res.data.success) {
         refreshNotes(); 
       }
+      else {
+      alert(res.data.message || "Failed to update note");
+    }
     } catch (error) {
       console.error("Failed to edit note:", error);
     }
